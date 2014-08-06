@@ -5,11 +5,14 @@ require '../vendor/autoload.php';
 $app = new \Slim\Slim();
 
 $app->get('/random', function () use ($app) {
-    $base = 'http://localhost/lampjavel-api/public/img/';
-    $files = scandir('img/');
+    $images = scandir('img/');
+    $random = mt_rand(2, count($images) - 1);
+    $image = file_get_contents('img/' . $images[$random]);
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
 
-    $app->response->setStatus(400);
-    $app->response->setBody($base . $files[mt_rand(2, count($files) - 1)]);
+    $app->response->header('Content-Type', 'content-type: ' . $finfo->buffer($image));
+
+    echo $image;
 });
 
 $app->run();
