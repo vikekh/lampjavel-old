@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /lampjavel/
+
+RewriteRule ^$ public/index.html [L]
+RewriteRule ^api/v([1-9][0-9]*)$ public/api.php?v=$1 [L]

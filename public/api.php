@@ -1,3 +1,5 @@
 <?php
 
-require '../app/app.php';
+$version = $_GET['v'];
+
+require '../api/v' . $version . '/index.php';
