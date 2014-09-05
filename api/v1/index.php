@@ -1,11 +1,12 @@
 <?php
 
 require '../vendor/autoload.php';
-require '../lib/Image.php';
-require '../lib/ImageFactory.php';
+require_once '../lib/LocalImageFactory.php';
+require_once '../lib/RemoteImageFactory.php';
 
 $app = new \Slim\Slim();
-$factory = new ImageFactory('../../public/img/');
+//$factory = new LocalImageFactory('../../public/img/');
+$factory = new RemoteImageFactory();
 
 $app->get('/images/random', function () use ($app, $factory) {
     $image = $factory->getRandomImage();

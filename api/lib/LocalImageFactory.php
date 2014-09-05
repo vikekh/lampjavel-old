@@ -1,6 +1,9 @@
 <?php
 
-class ImageFactory {
+require_once '../lib/ImageFactoryInterface.php';
+require_once '../lib/Image.php';
+
+class LocalImageFactory implements ImageFactoryInterface {
 
     private $_images;
     private $_path;
