@@ -14,8 +14,8 @@ class ImageFactory {
         return new Image($this->_images[$id]);
     }
 
-    public function getNumberOfImages() {
-        return count($this->_images);
+    public function getRandomId() {
+        return mt_rand(0, count($this->_images) - 1);
     }
 
 }
